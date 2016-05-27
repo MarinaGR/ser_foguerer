@@ -25,6 +25,8 @@ function onBodyLoad()
 	{	
 		setLocalStorage("fecha", now); 
 	}
+	
+	check_internet();		
 }
 
 function onDeviceReady()
