@@ -1,7 +1,7 @@
 //Global Variables
 var now = new Date().getTime();
 
-var extern_siteurl="http://ovnyline.es/SER_FOGUERER/index.html?app=mobile&app_ios=mobile&flag="+now; 
+var extern_siteurl="http://serfoguerer.ovnyline.es/index.html?app=mobile&app_ios=mobile&flag="+now; 
 
 //Get the screen and viewport size
 var viewport_width=$(window).outerWidth();
@@ -13,7 +13,7 @@ var start_session;
 var uuid;
 
 $(document).ready(function() {
-	$("#contenido").height(parseInt($(window).height())-4+"px");
+	$("#contenido").height(parseInt($(window).height())-2+"px");
 });
 
 function onBodyLoad()
