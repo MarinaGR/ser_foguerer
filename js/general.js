@@ -71,7 +71,7 @@ function onDeviceReady()
 function onBackKeyDown()
 {		
 	var myIframe=document.getElementById('contenido');	
-	if((myIframe.contentWindow.document.location.href).indexOf("menu.html")!=-1 || window.location.href.indexOf("offline.html")!=-1)
+	if((myIframe.contentWindow.document.location.href).indexOf("menu.html")!=-1 || ($("#contenido").attr("src")).indexOf("offline.html")!=-1)
 	{		
 		alert("salgo1");
 		navigator.app.exitApp();
