@@ -44,7 +44,9 @@ function onDeviceReady()
 	var start_session=getSessionStorage("start_session"); 
 	if(typeof start_session == "undefined" || start_session==null)	
 	{	
-		var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*60*24*5  
+		//var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*60*24*5;   //5dias
+		
+		var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*5; //5min
 				
 		if(now>nueva_fecha) //cada 5 días limpia cache
 		{
