@@ -21,19 +21,11 @@
 			document.addEventListener("deviceready", function ()
 			{
 				document.addEventListener("backbutton", function() {
+					alert("salgo2");
 					navigator.app.exitApp();
 					return false;
 				}, false);
-				
-				var boton_cierre=document.getElementById("boton_cierre");
-				if(boton_cierre!=null)
-				{
-					boton_cierre.addEventListener("click", function () {
-						navigator.app.exitApp();
-						return false;
-					}, false);	
-				}
-				
+
 			}, false); 
 
 		</script>
@@ -72,12 +64,6 @@
 				</div>		
 			</div>
 
-		</div>
-		
-		<div id="boton_cierre">
-			<div style='width:100%;margin:auto;text-align:center;color:#f6f6f6;background:#400409;cursor:pointer' >
-				X
-			</div>
 		</div>
 		
 	</body>
