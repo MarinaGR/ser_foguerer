@@ -60,15 +60,16 @@ function onDeviceReady()
     
 function onBackKeyDown()
 {		
-	alert("onBackKeyDown");
 	var myIframe=document.getElementById('contenido');	
-	if((myIframe.contentWindow.document.location.href).indexOf("menu.html")!=-1 || ($("#contenido").attr("src")).indexOf("offline.html")!=-1)
+	if((myIframe.contentWindow.document.location.href).indexOf("principal.html")!=-1 || ($("#contenido").attr("src")).indexOf("offline.html")!=-1)
 	{		
 		alert("salgo1");
 		navigator.app.exitApp();
 		return false;
 	}
-	window.history.back();
+	else {
+		myIframe.contentWindow.document.location.href="principal.html";
+	}
 }
 function onMenuKeyDown()
 {
@@ -76,29 +77,12 @@ function onMenuKeyDown()
 }
 function onOnline()
 {
-	alert("onOnline");
 	setTimeout(function(){
 		$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
 	},250);
-	
-	/*var networkState = navigator.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.CELL]     = 'Cell generic connection';
-    states[Connection.NONE]     = 'No network connection';
-
-    alert('Conexión: ' + states[networkState]);*/
-
 }
 function onOffline()
 {
-	alert("onOffline");
 	setTimeout(function(){
 		$("#contenido").attr("src","offline.html");
 	},250);
@@ -107,9 +91,8 @@ function onOffline()
 
 function check_internet(){
 
-	alert("check_internet");
 	var isOffline = 'onLine' in navigator && !navigator.onLine;
-	alert("isOffline "+isOffline);
+
 	if(isOffline) 
 	{		
 		setTimeout(function(){
