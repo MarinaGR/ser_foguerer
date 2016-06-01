@@ -14,7 +14,7 @@ var start_session;
 var uuid;
 
 $(document).ready(function() {
-	$("#contenido").height(parseInt(viewport_height)-2+"px");
+	$("#contenido").height(parseInt(viewport_height)+"px");
 });
 
 function onBodyLoad()
@@ -30,10 +30,6 @@ function onBodyLoad()
 
 function onDeviceReady()
 {
-	
-	alert("onDeviceReady");
-	
-	//RECOGER device.uuid para las valoraciones
 	uuid=device.uuid;
 	setLocalStorage("uuid", uuid);
 	
@@ -48,18 +44,13 @@ function onDeviceReady()
 	var start_session=getSessionStorage("start_session"); 
 	if(typeof start_session == "undefined" || start_session==null)	
 	{	
-		//var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*60*24*5;   //5dias
-		
-		var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*5; //5min
-				
+		var nueva_fecha=parseInt(getLocalStorage("fecha"))+1000*60*60*24*5;
 		if(now>nueva_fecha) //cada 5 días limpia cache
 		{
 			window.cache.clear(function(status) {}, function(status) {});
 			setLocalStorage("fecha", now);
-			
-			$("body").prepend("cache");
 		}
-		getSessionStorage("start_session", "inicio");
+		setSessionStorage("start_session", "inicio");
 	}
 	
 }
@@ -70,15 +61,9 @@ function onBackKeyDown()
 	
 	var vista_anterior=myIframe.contentWindow.vista_anterior;
 	var vista_actual=myIframe.contentWindow.vista_actual;
-
 	
-	alert("href "+myIframe.contentWindow.document.location.href);
-	alert("anterior "+vista_anterior);
-	alert("actual "+vista_actual);
-	
-	if(((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1)
+	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1)
 	{		
-		alert("salgo1");
 		navigator.app.exitApp();
 		return false;
 	}
@@ -105,10 +90,8 @@ function onOffline()
 }
 
 function check_internet(){
-
+		
 	var isOffline = 'onLine' in navigator && !navigator.onLine;
-
-	alert("isOffline "+isOffline);
 	
 	if(isOffline) 
 	{		
@@ -118,8 +101,7 @@ function check_internet(){
 	}
 	else 
 	{
-		alert("src "+$("#contenido").attr("src"));
-		if(typeof $("#contenido").attr("src") == "undefined")
+		if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null)
 		{			
 			setTimeout(function(){
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
