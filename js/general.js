@@ -13,7 +13,7 @@ var start_session;
 var uuid;
 
 $(document).ready(function() {
-	$("#contenido").height(parseInt($(window).height())-2+"px");
+	$("#contenido").height(parseInt(screen_height)-4+"px");
 });
 
 function onBodyLoad()
@@ -24,9 +24,7 @@ function onBodyLoad()
 	if(typeof fecha == "undefined"  || fecha==null)	
 	{	
 		setLocalStorage("fecha", now); 
-	}
-	
-	check_internet();		
+	}	
 }
 
 function onDeviceReady()
@@ -40,6 +38,8 @@ function onDeviceReady()
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	document.addEventListener("menubutton", onMenuKeyDown, false);
+	
+	check_internet();	
 		
 	var start_session=getSessionStorage("start_session"); 
 	if(typeof start_session == "undefined" || start_session==null)	
@@ -55,21 +55,12 @@ function onDeviceReady()
 		}
 		getSessionStorage("start_session", "inicio");
 	}
-
-	check_internet();			
 	
-	var boton_cierre=document.getElementById("boton_cierre");
-	if(boton_cierre!=null)
-	{
-		boton_cierre.addEventListener("click", function () {
-			navigator.app.exitApp();
-			return false;
-		}, false);	
-	}	
 }
     
 function onBackKeyDown()
 {		
+	alert("onBackKeyDown");
 	var myIframe=document.getElementById('contenido');	
 	if((myIframe.contentWindow.document.location.href).indexOf("menu.html")!=-1 || ($("#contenido").attr("src")).indexOf("offline.html")!=-1)
 	{		
@@ -85,6 +76,7 @@ function onMenuKeyDown()
 }
 function onOnline()
 {
+	alert("onOnline");
 	setTimeout(function(){
 		$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
 	},250);
@@ -106,6 +98,7 @@ function onOnline()
 }
 function onOffline()
 {
+	alert("onOffline");
 	setTimeout(function(){
 		$("#contenido").attr("src","offline.html");
 	},250);
@@ -114,8 +107,9 @@ function onOffline()
 
 function check_internet(){
 
+	alert("check_internet");
 	var isOffline = 'onLine' in navigator && !navigator.onLine;
-
+	alert("isOffline "+isOffline);
 	if(isOffline) 
 	{		
 		setTimeout(function(){

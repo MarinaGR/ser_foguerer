@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap   = "http://phonegap.com/ns/1.0"
 		id          = "com.prisaradio.SerFoguerer.ovnyline"
-		version     = "2.2.1" > 
+		version     = "2.3.0" > 
 
     <name>Ser Foguerer Alicante - Guía Hogueras de San Juan </name>
 
@@ -41,7 +41,7 @@
 
     <!-- Plugins -->	
 	
-	<!--<plugin name="org.apache.cordova.network-information" spec="0.2.12" source="pgb" />-->
+	<plugin name="org.apache.cordova.network-information" spec="0.2.12" source="pgb" />
 	
 	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.0.12" />
 	<gap:plugin name="cordova-plugin-cache" spec="1.0.5" source="npm" />
