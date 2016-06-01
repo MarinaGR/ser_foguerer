@@ -67,8 +67,8 @@ function onBackKeyDown()
 {		
 	var myIframe=document.getElementById('contenido');	
 	
-	var vista_anterior=myIframe.contentWindow.document.vista_anterior;
-	var vista_actual=myIframe.contentWindow.document.vista_actual;
+	var vista_anterior=myIframe.contentWindow.vista_anterior;
+	var vista_actual=myIframe.contentWindow.vista_actual;
 
 	
 	alert("href "+myIframe.contentWindow.document.location.href);
@@ -117,7 +117,7 @@ function check_internet(){
 	}
 	else 
 	{
-		alert($("#contenido").attr("src"));
+		alert("src "+$("#contenido").attr("src"));
 		if(typeof $("#contenido").attr("src") == "undefined")
 		{			
 			setTimeout(function(){
