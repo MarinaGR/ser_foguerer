@@ -65,10 +65,17 @@ function onDeviceReady()
     
 function onBackKeyDown()
 {		
-	alert(myIframe.contentWindow.document.location.href);
-
 	var myIframe=document.getElementById('contenido');	
-	if((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 || ($("#contenido").attr("src")).indexOf("offline")!=-1)
+	
+	var vista_anterior=myIframe.contentWindow.document.vista_anterior;
+	var vista_actual=myIframe.contentWindow.document.vista_actual;
+
+	
+	alert("href "+myIframe.contentWindow.document.location.href);
+	alert("anterior "+vista_anterior);
+	alert("actual "+vista_actual);
+	
+	if(((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1)
 	{		
 		alert("salgo1");
 		navigator.app.exitApp();
