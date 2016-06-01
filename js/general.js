@@ -13,7 +13,7 @@ var start_session;
 var uuid;
 
 $(document).ready(function() {
-	$("#contenido").height(parseInt(screen_height)-4+"px");
+	$("#contenido").height(parseInt(viewport_height)-2+"px");
 });
 
 function onBodyLoad()
@@ -29,6 +29,9 @@ function onBodyLoad()
 
 function onDeviceReady()
 {
+	
+	alert("onDeviceReady");
+	
 	//RECOGER device.uuid para las valoraciones
 	uuid=device.uuid;
 	setLocalStorage("uuid", uuid);
@@ -52,6 +55,8 @@ function onDeviceReady()
 		{
 			window.cache.clear(function(status) {}, function(status) {});
 			setLocalStorage("fecha", now);
+			
+			$("body").prepend("cache");
 		}
 		getSessionStorage("start_session", "inicio");
 	}
@@ -60,8 +65,10 @@ function onDeviceReady()
     
 function onBackKeyDown()
 {		
+	alert(myIframe.contentWindow.document.location.href);
+
 	var myIframe=document.getElementById('contenido');	
-	if((myIframe.contentWindow.document.location.href).indexOf("principal.html")!=-1 || ($("#contenido").attr("src")).indexOf("offline.html")!=-1)
+	if((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 || ($("#contenido").attr("src")).indexOf("offline")!=-1)
 	{		
 		alert("salgo1");
 		navigator.app.exitApp();
@@ -93,6 +100,8 @@ function check_internet(){
 
 	var isOffline = 'onLine' in navigator && !navigator.onLine;
 
+	alert("isOffline "+isOffline);
+	
 	if(isOffline) 
 	{		
 		setTimeout(function(){
@@ -101,6 +110,7 @@ function check_internet(){
 	}
 	else 
 	{
+		alert($("#contenido").attr("src"));
 		if(typeof $("#contenido").attr("src") == "undefined")
 		{			
 			setTimeout(function(){
