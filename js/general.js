@@ -1,7 +1,8 @@
 //Global Variables
 var now = new Date().getTime();
 
-var extern_siteurl="http://serfoguerer.ovnyline.es/index.html?app=mobile&app_ios=mobile&flag="+now; 
+var url_ppal="http://serfoguerer.ovnyline.es/";
+var extern_siteurl=url_ppal+"index.html?app=mobile&app_ios=mobile&flag="+now; 
 
 //Get the screen and viewport size
 var viewport_width=$(window).outerWidth();
@@ -82,7 +83,7 @@ function onBackKeyDown()
 		return false;
 	}
 	else {
-		myIframe.contentWindow.document.location.href="principal.html";
+		myIframe.contentWindow.document.location.href=url_ppal+"principal.html?vista="+vista_anterior;
 	}
 }
 function onMenuKeyDown()
