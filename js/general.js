@@ -14,6 +14,9 @@ var uuid;
 
 $(document).ready(function() {
 	$("#contenido").height(parseInt(viewport_height)-2+"px");
+	
+	$("body").append($("#contenido").height());
+	
 });
 
 function onBodyLoad()
@@ -92,9 +95,12 @@ function onOnline()
 }
 function onOffline()
 {
-	setTimeout(function(){
-		window.location.href="offline.html";
-	},250);
+	if(window.location.href!="offline.html")
+	{
+		setTimeout(function(){
+			window.location.href="offline.html";
+		},250);
+	}
 
 }
 
@@ -103,7 +109,7 @@ function check_internet(){
 	$("body").append(JSON.stringify(navigator));
 	
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
-	var isOffline = navigator.connection.type!='none' && navigator.connection.type!='unknown';
+	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';
 		
 	alert(isOffline);
 	
