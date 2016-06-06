@@ -25,6 +25,7 @@ function onBodyLoad()
 	{	
 		setLocalStorage("fecha", now); 
 	}	
+		
 }
 
 function onDeviceReady()
@@ -65,7 +66,7 @@ function onBackKeyDown()
 	alert("onBackKeyDown");
 	
 		
-	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1 || window.location.href=="offline.html"!=-1)
+	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1 || (window.location.href).indexOf("offline.html")!=-1)  
 	{		
 		navigator.app.exitApp();
 		return false;
@@ -80,7 +81,7 @@ function onMenuKeyDown()
 }
 function onOnline()
 {
-	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || window.location.href=="offline.html")
+	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
 	{			
 		setTimeout(function(){
 			$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
@@ -89,7 +90,7 @@ function onOnline()
 }
 function onOffline()
 {
-	if(window.location.href!="offline.html")
+	if((window.location.href).indexOf("offline.html")!=-1)
 	{
 		setTimeout(function(){
 			window.location.href="offline.html";
@@ -111,7 +112,7 @@ function check_internet(){
 		
 	if(isOffline) 
 	{		
-		if(window.location.href!="offline.html")
+		if((window.location.href).indexOf("offline.html")!=-1)
 		{
 			setTimeout(function(){
 				//$("#contenido").attr("src","offline.html");				
@@ -121,7 +122,7 @@ function check_internet(){
 	}
 	else 
 	{
-		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || window.location.href=="offline.html")
+		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
 		{			
 			setTimeout(function(){
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
