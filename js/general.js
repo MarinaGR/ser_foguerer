@@ -30,8 +30,6 @@ function onBodyLoad()
 function onDeviceReady()
 {
 	
-	alert("onDeviceReady");
-	
 	uuid=device.uuid;
 	setLocalStorage("uuid", uuid);
 	
@@ -104,6 +102,12 @@ function check_internet(){
 	
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
 	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';
+		
+		
+	$("body").append(isOffline);
+	$("body").append('$("#contenido").attr("src"): '+$("#contenido").attr("src"));
+	$("body").append('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
+	$("body").append('window.location.href: '+window.location.href);
 		
 	if(isOffline) 
 	{		
