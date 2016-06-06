@@ -18,8 +18,6 @@ $(document).ready(function() {
 
 function onBodyLoad()
 {	
-	alert("onBodyLoad");
-	
     document.addEventListener("deviceready", onDeviceReady, false); 
 
 	var fecha=getLocalStorage("fecha"); 
@@ -66,8 +64,7 @@ function onBackKeyDown()
 	var vista_anterior=myIframe.contentWindow.vista_anterior;
 	var vista_actual=myIframe.contentWindow.vista_actual;
 	
-	
-	
+		
 	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1)
 	{		
 
@@ -104,6 +101,8 @@ function onOffline()
 function check_internet(){
 		
 	var isOffline = 'onLine' in navigator && !navigator.onLine;
+	
+	$("body").append(JSON.stringify(navigator));
 	
 	alert(isOffline);
 	
