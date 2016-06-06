@@ -65,7 +65,7 @@ function onBackKeyDown()
 	var vista_actual=myIframe.contentWindow.vista_actual;
 	
 		
-	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1)
+	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1 || (myIframe.contentWindow.document.location.href).indexOf("offline")!=-1)
 	{		
 
 		alert("salgo");
@@ -93,14 +93,15 @@ function onOnline()
 function onOffline()
 {
 	setTimeout(function(){
-		$("#contenido").attr("src","offline.html");
+		window.location.href="offline.html";
 	},250);
 
 }
 
 function check_internet(){
 		
-	var isOffline = 'onLine' in navigator && !navigator.onLine;
+	//var isOffline = 'onLine' in navigator && !navigator.onLine;
+	var isOffline = 'none' in navigator.connection.type || 'unknown' in navigator.connection.type;
 	
 	$("body").append(JSON.stringify(navigator));
 	
@@ -109,7 +110,8 @@ function check_internet(){
 	if(isOffline) 
 	{		
 		setTimeout(function(){
-			$("#contenido").attr("src","offline.html");				
+			//$("#contenido").attr("src","offline.html");				
+			window.location.href="offline.html";
 		},250);
 	}
 	else 
