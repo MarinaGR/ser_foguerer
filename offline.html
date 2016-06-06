@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ES">
 	
 	<head>
@@ -14,10 +14,11 @@
 		<link href="./css/estilos.css" rel="stylesheet" type="text/css">	
 		<script src="./js/jquery.js"></script>
 		<script src="./js/jquery_ui.js"></script>
+		<script src="./js/jquery.ui.touch-punch.min.js"></script>
 		<script src="./js/general.js"></script>
 		<script src="./cordova.js"></script>
 		<script>
-
+			
 			document.addEventListener("deviceready", function ()
 			{
 				document.addEventListener("backbutton", function() {
@@ -27,6 +28,13 @@
 				}, false);
 
 			}, false); 
+			
+			function onBackKeyDown()
+			{		
+				alert("salgo2");
+				navigator.app.exitApp();
+				return false;
+			}
 
 		</script>
 	</head>
@@ -36,7 +44,7 @@
 		<div class="cortina"> </div>
 		
 		<div class="ov_message">
-			Para tener acceso a la aplicación completa, necesita una conexión a internet. <a href="index.html">ACTUALIZAR</a>
+			Para tener acceso a la aplicación completa, necesita una conexión a internet. <a href="#" onclick="check_internet();">ACTUALIZAR</a>
 		</div>
 		
 		<div class="contenedor_logo_sup">

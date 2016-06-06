@@ -4,7 +4,6 @@ var now = new Date().getTime();
 var url_ppal="http://serfoguerer.ovnyline.es/";
 var extern_siteurl=url_ppal+"index.html?app=mobile&app_ios=mobile&flag="+now; 
 
-//Get the screen and viewport size
 var viewport_width=$(window).outerWidth();
 var viewport_height=$(window).outerHeight();
 var screen_width=screen.width;
@@ -14,7 +13,7 @@ var start_session;
 var uuid;
 
 $(document).ready(function() {
-	$("#contenido").height(parseInt(viewport_height)+"px");
+	$("#contenido").height(parseInt(viewport_height)-2+"px");
 });
 
 function onBodyLoad()
