@@ -99,12 +99,12 @@ function onOffline()
 }
 
 function check_internet(){
-		
-	//var isOffline = 'onLine' in navigator && !navigator.onLine;
-	var isOffline = 'none' in navigator.connection.type || 'unknown' in navigator.connection.type;
 	
 	$("body").append(JSON.stringify(navigator));
 	
+	//var isOffline = 'onLine' in navigator && !navigator.onLine;
+	var isOffline = navigator.connection.type!='none' && navigator.connection.type!='unknown';
+		
 	alert(isOffline);
 	
 	if(isOffline) 
