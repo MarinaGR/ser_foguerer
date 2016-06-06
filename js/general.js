@@ -66,12 +66,20 @@ function onBackKeyDown()
 	var vista_anterior=myIframe.contentWindow.vista_anterior;
 	var vista_actual=myIframe.contentWindow.vista_actual;
 	
+	
+	
 	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1)
 	{		
+
+		alert("salgo");
+		
 		navigator.app.exitApp();
 		return false;
 	}
 	else {
+		
+		alert("no salgo");
+		
 		myIframe.contentWindow.document.location.href=url_ppal+"principal.html?vista="+vista_anterior;
 	}
 }
