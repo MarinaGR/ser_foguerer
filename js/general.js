@@ -18,6 +18,8 @@ $(document).ready(function() {
 
 function onBodyLoad()
 {	
+	alert("onBodyLoad");
+	
     document.addEventListener("deviceready", onDeviceReady, false); 
 
 	var fecha=getLocalStorage("fecha"); 
@@ -29,6 +31,9 @@ function onBodyLoad()
 
 function onDeviceReady()
 {
+	
+	alert("onDeviceReady");
+	
 	uuid=device.uuid;
 	setLocalStorage("uuid", uuid);
 	
@@ -91,6 +96,8 @@ function onOffline()
 function check_internet(){
 		
 	var isOffline = 'onLine' in navigator && !navigator.onLine;
+	
+	alert(isOffline);
 	
 	if(isOffline) 
 	{		

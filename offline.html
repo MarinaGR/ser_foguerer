@@ -22,7 +22,7 @@
 			document.addEventListener("deviceready", function ()
 			{
 				document.addEventListener("backbutton", function() {
-					alert("salgo2");
+					alert("salgo-offline");
 					navigator.app.exitApp();
 					return false;
 				}, false);
@@ -31,7 +31,7 @@
 			
 			function onBackKeyDown()
 			{		
-				alert("salgo2");
+				alert("salgo-offline2");
 				navigator.app.exitApp();
 				return false;
 			}
@@ -43,8 +43,8 @@
 	
 		<div class="cortina"> </div>
 		
-		<div class="ov_message">
-			Para tener acceso a la aplicación completa, necesita una conexión a internet. <a href="#" onclick="check_internet();">ACTUALIZAR</a>
+		<div class="ov_message" onclick="check_internet();">
+			Para tener acceso a la aplicación completa, necesita una conexión a internet. <a href="#">ACTUALIZAR</a>
 		</div>
 		
 		<div class="contenedor_logo_sup">
