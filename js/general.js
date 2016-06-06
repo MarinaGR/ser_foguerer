@@ -13,10 +13,7 @@ var start_session;
 var uuid;
 
 $(document).ready(function() {
-	$("#contenido").height(parseInt(viewport_height)-2+"px");
-	
-	$("body").append($("#contenido").height());
-	
+	$("#contenido").height(parseInt(viewport_height)-2+"px");	
 });
 
 function onBodyLoad()
@@ -32,8 +29,6 @@ function onBodyLoad()
 
 function onDeviceReady()
 {
-	
-	alert("onDeviceReady");
 	
 	uuid=device.uuid;
 	setLocalStorage("uuid", uuid);
@@ -70,16 +65,10 @@ function onBackKeyDown()
 		
 	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1 || (myIframe.contentWindow.document.location.href).indexOf("offline")!=-1)
 	{		
-
-		alert("salgo");
-		
 		navigator.app.exitApp();
 		return false;
 	}
 	else {
-		
-		alert("no salgo");
-		
 		myIframe.contentWindow.document.location.href=url_ppal+"principal.html?vista="+vista_anterior;
 	}
 }
@@ -89,9 +78,12 @@ function onMenuKeyDown()
 }
 function onOnline()
 {
-	setTimeout(function(){
-		$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
-	},250);
+	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || window.location.href!=="offline.html")
+	{			
+		setTimeout(function(){
+			$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
+		},250);
+	}
 }
 function onOffline()
 {
@@ -106,23 +98,22 @@ function onOffline()
 
 function check_internet(){
 	
-	$("body").append(JSON.stringify(navigator));
-	
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
 	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';
 		
-	alert(isOffline);
-	
 	if(isOffline) 
 	{		
-		setTimeout(function(){
-			//$("#contenido").attr("src","offline.html");				
-			window.location.href="offline.html";
-		},250);
+		if(window.location.href!="offline.html")
+		{
+			setTimeout(function(){
+				//$("#contenido").attr("src","offline.html");				
+				window.location.href="offline.html";
+			},250);
+		}
 	}
 	else 
 	{
-		if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null)
+		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || window.location.href!=="offline.html")
 		{			
 			setTimeout(function(){
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
