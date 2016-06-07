@@ -59,16 +59,8 @@ function onBackKeyDown()
 	
 	var vista_anterior=myIframe.contentWindow.vista_anterior;
 	var vista_actual=myIframe.contentWindow.vista_actual;
-	
-	$("body").append("onBackKeyDown");
-	
-	$("body").append("<br>"+myIframe.contentWindow.document.location.href);
-	$("body").append("<br>"+vista_actual);
-	$("body").append("<br>"+window.location.href);
-	$("body").append("<br>"+$("#contenido").attr("src"));
-	
-		
-	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1 || (window.location.href).indexOf("offline.html")!=-1)  
+			
+	if(((myIframe.contentWindow.document.location.href).indexOf("index")=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || (window.location.href).indexOf("offline.html")!=-1)  
 	{		
 		navigator.app.exitApp();
 		return false;
@@ -87,7 +79,7 @@ function onOnline()
 	$("body").html('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
 	$("body").html('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
 	
-	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")==-1)
+	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
 	{			
 		setTimeout(function(){
 			$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
@@ -109,15 +101,10 @@ function check_internet(){
 	
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
 	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';		
-		
-	$("body").append(isOffline);
-	$("body").append('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
-	$("body").append('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
-	$("body").append('window.location.href: '+window.location.href);
-		
+
 	if(isOffline) 
 	{		
-		if((window.location.href).indexOf("offline.html")!=-1)
+		if((window.location.href).indexOf("offline.html")==-1)
 		{
 			setTimeout(function(){
 				//$("#contenido").attr("src","offline.html");				
@@ -127,7 +114,7 @@ function check_internet(){
 	}
 	else 
 	{
-		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")==-1)
+		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
 		{			
 			setTimeout(function(){
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
