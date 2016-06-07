@@ -25,12 +25,10 @@ function onBodyLoad()
 	{	
 		setLocalStorage("fecha", now); 
 	}	
-		
 }
 
 function onDeviceReady()
-{
-	
+{	
 	uuid=device.uuid;
 	setLocalStorage("uuid", uuid);
 	
@@ -53,7 +51,6 @@ function onDeviceReady()
 		}
 		setSessionStorage("start_session", "inicio");
 	}
-	
 }
     
 function onBackKeyDown()
@@ -90,7 +87,7 @@ function onOnline()
 	$("body").html('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
 	$("body").html('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
 	
-	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")")==-1)
+	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")==-1)
 	{			
 		setTimeout(function(){
 			$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
@@ -130,7 +127,7 @@ function check_internet(){
 	}
 	else 
 	{
-		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")")==-1)
+		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")==-1)
 		{			
 			setTimeout(function(){
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
