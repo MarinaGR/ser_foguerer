@@ -63,7 +63,12 @@ function onBackKeyDown()
 	var vista_anterior=myIframe.contentWindow.vista_anterior;
 	var vista_actual=myIframe.contentWindow.vista_actual;
 	
-	alert("onBackKeyDown");
+	$("body").append("onBackKeyDown");
+	
+	$("body").append("<br>"+myIframe.contentWindow.document.location.href);
+	$("body").append("<br>"+vista_actual);
+	$("body").append("<br>"+window.location.href);
+	$("body").append("<br>"+$("#contenido").attr("src"));
 	
 		
 	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || ($("#contenido").attr("src")).indexOf("offline")!=-1 || (window.location.href).indexOf("offline.html")!=-1)  
@@ -85,7 +90,7 @@ function onOnline()
 	$("body").html('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
 	$("body").html('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
 	
-	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
+	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")")==-1)
 	{			
 		setTimeout(function(){
 			$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
@@ -95,7 +100,7 @@ function onOnline()
 function onOffline()
 {
 	$("body").html('(window.location.href).indexOf("offline.html"): '+(window.location.href).indexOf("offline.html"));
-	if((window.location.href).indexOf("offline.html")!=-1)
+	if((window.location.href).indexOf("offline.html")==-1)
 	{
 		setTimeout(function(){
 			window.location.href="offline.html";
@@ -106,8 +111,7 @@ function onOffline()
 function check_internet(){
 	
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
-	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';
-		
+	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';		
 		
 	$("body").append(isOffline);
 	$("body").append('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
@@ -126,7 +130,7 @@ function check_internet(){
 	}
 	else 
 	{
-		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
+		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")")==-1)
 		{			
 			setTimeout(function(){
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
