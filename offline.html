@@ -21,9 +21,7 @@
 			
 			document.addEventListener("deviceready", function ()
 			{
-				alert("esta en deviceready");
 				document.addEventListener("backbutton", function() {
-					alert("salgo-offline");
 					navigator.app.exitApp();
 					return false;
 				}, false);
@@ -32,7 +30,6 @@
 			
 			function onBackKeyDown()
 			{		
-				alert("salgo-offline2");
 				navigator.app.exitApp();
 				return false;
 			}
@@ -77,32 +74,14 @@
 			function comprobar_conexion()
 			{
 				var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';
-				if(!isOffline) 
-				{		
-					if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
-					{			
-						setTimeout(function(){
+				
+				if(!isOffline)  
+				{
+					setTimeout(function(){
 							
-							$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
-							
-						},250);
-					}		
-					else if((window.location.href).indexOf("offline")!=-1)
-					{
-						setTimeout(function(){
-							
-							window.location.href="index.html";
-							
-						},250);
-					}	
-					else					
-					{
-						setTimeout(function(){
-							
-							window.location.href="index.html";
-							
-						},250);
-					}
+						window.location.href="index.html";
+						
+					},250);
 				}
 			}
 			

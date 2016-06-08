@@ -75,10 +75,6 @@ function onMenuKeyDown()
 }
 function onOnline()
 {
-	$("body").append('(window.location.href).indexOf("offline.html"): '+(window.location.href).indexOf("offline.html"));
-	$("body").append('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
-	$("body").append('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
-	
 	if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 	{			
 		setTimeout(function(){
@@ -107,7 +103,6 @@ function onOnline()
 
 function onOffline()
 {
-	$("body").append('(window.location.href).indexOf("offline"): '+(window.location.href).indexOf("offline"));
 	if((window.location.href).indexOf("offline")==-1)
 	{
 		setTimeout(function(){
