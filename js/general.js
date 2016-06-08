@@ -116,8 +116,6 @@ function check_internet(){
 	
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
 	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';		
-
-	alert(isOffline);
 	
 	if(isOffline) 
 	{		
