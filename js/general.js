@@ -33,7 +33,7 @@ function onDeviceReady()
 	setLocalStorage("uuid", uuid);
 	
 	document.addEventListener("offline", onOffline, false);
-	document.addEventListener("online", onOnline, false);
+	//document.addEventListener("online", onOnline, false);
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	document.addEventListener("menubutton", onMenuKeyDown, false);
@@ -73,7 +73,8 @@ function onMenuKeyDown()
 {
 	//window.location.href='index.html';
 }
-function onOnline()
+
+/*function onOnline()
 {
 	if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 	{			
@@ -99,7 +100,7 @@ function onOnline()
 			
 		},250);
 	}
-}
+}*/
 
 function onOffline()
 {
