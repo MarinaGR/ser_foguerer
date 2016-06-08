@@ -87,7 +87,15 @@ function onOnline()
 			
 		},250);
 	}		
-	if((window.location.href).indexOf("offline")!=-1)
+	else if((window.location.href).indexOf("offline")!=-1)
+	{
+		setTimeout(function(){
+			
+			window.location.href="index.html";
+			
+		},250);
+	}	
+	else					
 	{
 		setTimeout(function(){
 			
@@ -133,7 +141,15 @@ function check_internet(){
 				
 			},250);
 		}		
-		if((window.location.href).indexOf("offline")!=-1)
+		else if((window.location.href).indexOf("offline")!=-1)
+		{
+			setTimeout(function(){
+				
+				window.location.href="index.html";
+				
+			},250);
+		}	
+		else					
 		{
 			setTimeout(function(){
 				
