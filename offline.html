@@ -77,21 +77,22 @@
 			function comprobar_conexion()
 			{
 				var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';
-				if(isOffline) 
+				if(!isOffline) 
 				{		
-					if((window.location.href).indexOf("offline")==-1)
-					{
-						setTimeout(function(){		
-							window.location.href="offline.html";
-						},250);
-					}
-				}
-				else 
-				{
-					if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline")!=-1)
+					if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 					{			
 						setTimeout(function(){
+							
 							$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
+							
+						},250);
+					}		
+					if((window.location.href).indexOf("offline")!=-1))
+					{
+						setTimeout(function(){
+							
+							window.location.href="index.html";
+							
 						},250);
 					}		
 				}
@@ -123,7 +124,6 @@
 					<h1>Guía de las hogueras <br>de San Juan (Alicante)</h1>	
 					
 					<p>Guía digital con toda la información de unas fiestas declaradas de <b>Interés Turístico Internacional</b>. En la guía encontrarás el programa de fiestas, las fechas de los concursos, tanto de las mascletàs como de los castillos de fuegos, la información de todas las hogueras... ¡Y MUCHO MÁS! </p>
-
 					
 					<h3>¡ACTIVA TU CONEXIÓN A INTERNET<br>PARA DISFRUTAR DE LA GUÍA DE HOGUERAS!</h3>
 								

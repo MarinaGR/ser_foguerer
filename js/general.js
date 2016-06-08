@@ -60,7 +60,7 @@ function onBackKeyDown()
 	var vista_anterior=myIframe.contentWindow.vista_anterior;
 	var vista_actual=myIframe.contentWindow.vista_actual;
 			
-	if(((myIframe.contentWindow.document.location.href).indexOf("index")=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || (window.location.href).indexOf("offline.html")!=-1)  
+	if(((myIframe.contentWindow.document.location.href).indexOf("index")!=-1 && vista_actual=="undefined") || ((myIframe.contentWindow.document.location.href).indexOf("principal")!=-1 && vista_actual=="menu") || (window.location.href).indexOf("offline")!=-1)  
 	{		
 		navigator.app.exitApp();
 		return false;
@@ -75,21 +75,32 @@ function onMenuKeyDown()
 }
 function onOnline()
 {
-	$("body").html('(window.location.href).indexOf("offline.html"): '+(window.location.href).indexOf("offline.html"));
-	$("body").html('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
-	$("body").html('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
+	$("body").append('(window.location.href).indexOf("offline.html"): '+(window.location.href).indexOf("offline.html"));
+	$("body").append('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
+	$("body").append('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
 	
-	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
+	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 	{			
 		setTimeout(function(){
+			
 			$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
+			
+		},250);
+	}		
+	if((window.location.href).indexOf("offline")!=-1))
+	{
+		setTimeout(function(){
+			
+			window.location.href="index.html";
+			
 		},250);
 	}
 }
+
 function onOffline()
 {
-	$("body").html('(window.location.href).indexOf("offline.html"): '+(window.location.href).indexOf("offline.html"));
-	if((window.location.href).indexOf("offline.html")==-1)
+	$("body").append('(window.location.href).indexOf("offline"): '+(window.location.href).indexOf("offline"));
+	if((window.location.href).indexOf("offline")==-1)
 	{
 		setTimeout(function(){
 			window.location.href="offline.html";
@@ -104,7 +115,7 @@ function check_internet(){
 
 	if(isOffline) 
 	{		
-		if((window.location.href).indexOf("offline.html")==-1)
+		if((window.location.href).indexOf("offline")==-1)
 		{
 			setTimeout(function(){
 				//$("#contenido").attr("src","offline.html");				
@@ -114,12 +125,22 @@ function check_internet(){
 	}
 	else 
 	{
-		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) || (window.location.href).indexOf("offline.html")!=-1)
+		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 		{			
 			setTimeout(function(){
+				
 				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
+				
 			},250);
 		}		
+		if((window.location.href).indexOf("offline")!=-1))
+		{
+			setTimeout(function(){
+				
+				window.location.href="index.html";
+				
+			},250);
+		}
 	}
 
 }
