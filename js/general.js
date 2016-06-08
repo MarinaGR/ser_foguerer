@@ -117,6 +117,8 @@ function check_internet(){
 	//var isOffline = 'onLine' in navigator && !navigator.onLine;
 	var isOffline = navigator.connection.type=='none' || navigator.connection.type=='unknown';		
 
+	alert(isOffline);
+	
 	if(isOffline) 
 	{		
 		if((window.location.href).indexOf("offline")==-1)
@@ -145,11 +147,11 @@ function check_internet(){
 				
 			},250);
 		}	
-		else					
+		else if((window.location.href).indexOf("index")!=-1)					
 		{
 			setTimeout(function(){
 				
-				window.location.href="index.html";
+				$("#contenido").attr("src",extern_siteurl+"&devid="+getLocalStorage("uuid"));
 				
 			},250);
 		}
