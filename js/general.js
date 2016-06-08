@@ -79,7 +79,7 @@ function onOnline()
 	$("body").append('typeof $("#contenido").attr("src"): '+typeof $("#contenido").attr("src"));
 	$("body").append('getSessionStorage("start_session"): '+getSessionStorage("start_session"));
 	
-	if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
+	if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 	{			
 		setTimeout(function(){
 			
@@ -87,7 +87,7 @@ function onOnline()
 			
 		},250);
 	}		
-	if((window.location.href).indexOf("offline")!=-1))
+	if((window.location.href).indexOf("offline")!=-1)
 	{
 		setTimeout(function(){
 			
@@ -125,7 +125,7 @@ function check_internet(){
 	}
 	else 
 	{
-		if((typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
+		if(typeof $("#contenido").attr("src") == "undefined" && getSessionStorage("start_session")==null) 
 		{			
 			setTimeout(function(){
 				
@@ -133,7 +133,7 @@ function check_internet(){
 				
 			},250);
 		}		
-		if((window.location.href).indexOf("offline")!=-1))
+		if((window.location.href).indexOf("offline")!=-1)
 		{
 			setTimeout(function(){
 				
